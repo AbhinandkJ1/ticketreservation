@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Booking</title>
+</head>
+<body>
+    <div class="movie-container">
+        <label for="">$10 per ticket</label>
+<!--        <select name="" id="movie">-->
+<!--            <option value="10">M S Dhoni</option>-->
+<!--            <option value="10">Bahubali</option>-->
+<!--            <option value="10">Joker</option>-->
+<!--        </select>-->
+    </div>
+
+    <div class="screen-container">
+        <ul class="ul-list">
+            <li>
+                <div class="seat"></div>
+                <small>N/O</small>
+            </li>
+            <li>
+                <div class="seat selected"></div>
+                <small>Selected</small>
+            </li>
+            <li>
+                <div class="seat occupied"></div>
+                <small>Occupied</small>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="screen"></div>
+        <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat occupied"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+        </div>
+        <div class="row">
+            <div class="seat"></div>
+            <div class="seat occupied"></div>
+            <div class="seat occupied"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+        </div>
+        <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat occupied"></div>
+            <div class="seat occupied"></div>
+        </div>
+        <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+        </div>
+        <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat occupied"></div>
+            <div class="seat"></div>
+        </div>
+        <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+        </div>
+
+    </div>
+
+
+    <p class="text">
+        You have selected <span id="count">0</span> seats <br>
+        Total price = $<span id="total"> 0</span>
+    </p>
+    <form action="{% url 'returntopage' %}">
+        {% csrf_token %}
+        <button type="submit"  onclick="myFunction()" style="width: 90px;height: 35px; background-color: #03001C; border-radius: 6px; color: white; border-color:#03001C;">
+            Confirm
+        </button>
+    </form>
+
+
+
+
+
+
+
+    <style>
+        body{
+    background-color: #181D31;
+    color: white;
+    padding: 3% 15%;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+
+
+    text-align: center;
+
+
+}
+#movie{
+    margin: 5px;
+    padding: 3px;
+    border-radius: 5px;
+    width: 110px;
+}
+.container{
+    display: inline-block;
+
+}
+.ul-list{
+    display: inline-block;
+}
+.row{
+    display: flex;
+    text-align: justify;
+}
+.seat{
+    width: 20px;
+    height: 17px;
+    background-color: #678983;
+    margin: 2px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+.movie-container select{
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+}
+.selected{
+    background-color: #1e733a;
+}
+.seat.occupied{
+    background-color: white;
+}
+.seat:nth-of-type(2){
+    margin-right: 10px;
+}
+.seat:nth-of-type(6){
+    margin-right: 10px;
+}
+.seat:not(.occupied):hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+.screen-container{
+
+    display: flex;
+    justify-content:center;
+    align-items: center;
+
+}
+.ul-list li{
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.ul-list{
+    background-color: #474E68;
+    list-style-type: none;
+    display: flex;
+    border-radius: 2%;
+    padding: 1%;
+    text-align: center;
+
+
+}
+small{
+    margin-left: 5px;
+}
+.screen{
+    background-color: white;
+    width: 170px;
+    height: 75px;
+    margin: 15px;
+    padding-left: 9px;
+    box-shadow: 0 3px 10px;
+    transform:rotateX(-45deg)
+
+}
+.container{
+    perspective: 1000px;
+}
+p.text span{
+    color: #678983;
+    </style>
+<script>
+    const container=document.querySelector('.container');
+const seats=document.querySelectorAll('row .seat:not(.occupied)');
+const count=document.getElementById('count');
+const total=document.getElementById('total');
+<!--const movieSelect=document.getElementById('movie');-->
+
+let ticketprice=10;
+
+function updatecount(){
+    const selectedSeats=document.querySelectorAll('.row .seat.selected');
+
+    const selectedSeatsCount=selectedSeats.length;
+
+    count.innerText=selectedSeatsCount;
+
+    total.innerText=selectedSeatsCount*ticketprice
+}
+
+
+
+
+container.addEventListener('click', (e) => {
+    if (e.target.classList.contains('seat') && !e.target.classList.contains('occupied')){
+        e.target.classList.toggle('selected');
+    }
+    updatecount();
+});
+function myFunction() {
+  alert("Thank you for choosing booKTicket");
+}
+
+
+</script>
+
+
+</body>
+</html>

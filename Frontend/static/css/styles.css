@@ -1,0 +1,173 @@
+#title{
+    background-color: #03001C;
+    padding: 3% 15%;
+}
+.container-fluid{
+    padding: 3% 15% ;
+
+}
+.dog{
+    transform: rotate(25deg);
+    padding-left: 20%;
+    right: 30%;
+}
+body{
+    font-family:"Montsterrat";
+}
+.navbar{
+    padding: 0 0 4.5rem;
+}
+.nav-item{
+    padding-left: 1rem;
+    font-size: 1.5rem;
+}
+.navbar-brand{
+    font-size: 3rem;
+}
+
+h1{
+    color: aliceblue;
+    font-family: "Montserrat-Black";
+}
+.btn{
+    margin: 5% 3% 5% 0%;
+}
+.dog-image{
+    width: 40%;
+    position: absolute;
+
+}
+#features{
+    padding:7% 15%;
+    background-color: #FFF;
+    position:relative;
+    z-index: 1;
+}
+.features-box{
+    padding: 5%;
+    text-align: center;
+}
+
+h2{
+    font-family: monospace;
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 1.5;
+}
+h3{
+    font-family: 'Times New Roman', Times, serif;
+
+}
+p{
+    color: #8f8f8f;
+}
+#carouselExample{
+    padding-top: 20px;
+    margin-top: 20px;
+}
+/* testimonial */
+#testimonials{
+    padding: 7% 15%;
+    text-align: center;
+    background-color: #16213E;
+    color: white;
+}
+.testimonial-image{
+    width: 10%;
+    border-radius: 100%;
+    margin: 2%;
+}
+#press{
+    background-color: #16213E;
+    text-align: center;
+    padding-bottom: 3%;
+
+}
+.press-logo{
+    width: 15%;
+    margin: 20px 20px 50px;
+}
+#pricing{
+    padding: 100px;
+    text-align: center;
+}
+.pricing-column{
+    padding: 2% 3%;
+}
+@media (max-width:1028px){
+    .dog{
+        padding-right: 20%;
+
+    }
+    #title{
+        text-align: center;
+    }
+    .dog-image{
+        position: static;
+        transform: rotate(-25deg);
+    }
+}
+#cta{
+    padding: 3% 15%;
+    text-align: center;
+    background-color: #16213E;
+    color: #FFF;
+}
+.last-font{
+    font-size: 50px;
+    padding-top: 5%;
+}
+.apple-image{
+    width: 25px;
+    height: 24px;
+    margin-bottom: 3px;
+}
+.playstore{
+    width: 25px;
+    height: 23px;
+    margin-bottom: 3px;
+}
+#footer{
+    padding: 3% 15%;
+    text-align: center;
+    font-weight: bold;
+}
+.footer-ln{
+    width: 25px;
+    height: 24px;
+
+}
+.instagram{
+    width: 25px;
+    height: 24px;
+
+}
+.easy{
+    width: 55px;
+    height: 51px;
+    margin-bottom: 5px;
+
+}
+
+.login-body{
+
+
+    padding: 3% 15%;
+    background-color: #181D31;
+}
+.form-div{
+    text-align: left;
+
+
+}
+.form-text{
+    color: white;
+}
+label{
+color:white;
+
+
+}
+
+for booking
+}

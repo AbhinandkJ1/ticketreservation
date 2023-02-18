@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Back End</title>
+</head>
+<body style="background: #434242; margin: 5% 15%;">
+    <div style="">
+        <nav class="navbar navbar-dark bg-dark ">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">BookTicket</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+              <div class="offcanvas-header">
+                  {% if request.session.username %}
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">{{request.session.username}}</h5>
+                  {% endif %}
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link " aria-current="page" href="{% url 'loginpag' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'arating' %}">Add Rating</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'addm' %}">Add Movies</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'displayrating' %}">Display Rating</a>
+                      <li class="nav-item">
+                    <a class="nav-link" href="{% url 'displaymovie' %}">Display Movies</a>
+                  </li>
+                  </li>
+                  <li class="nav-item">
+                  <a class="nav-link " aria-current="page" href="{% url 'adminlogout' %}">Log Out</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+
+    <!-- navbar ends
+     -->
+     <div>
+        <h1 style="text-align: center; color:white; padding-top: 10px;">Welcome to BookTicket</h1>
+
+     </div>
+    {% block content %}
+     <div id="carouselExampleIndicators" class="carousel slide "  data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="1500">
+          <img src="{% static 'images/imgg.jpg' %}" class="d-block w-100" alt="...">
+
+        </div>
+        <div class="carousel-item" data-bs-interval="1500">
+          <img src="{% static 'images/ironman.jpg' %}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="1000">
+          <img src="{% static 'images/pi.jpg' %}" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+{% endblock %}
+
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      {% if messages %}
+        {% for message in messages %}
+
+
+      {% if message.tags == 'warning' %}
+      <script>
+        swal('{{message}}','','warning');
+      </script>
+      {% elif message.tags == 'error' %}
+      <script>
+        swal('{{message}}','','error');
+      </script>
+      {% else %}
+      <script>
+        swal('{{message}}','','success');
+      </script>
+      {% endif %}
+      {% endfor %} {% endif %}
+
+
+</body>
+</html>

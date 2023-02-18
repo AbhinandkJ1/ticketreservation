@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="row" style="padding-top: 15px;">
+<form method="post" action="{% url 'updatemovie' dataid=data.id %}" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default"><b>Language</b></span>
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="language" value="{{data.Language}}">
+</div>
+            <div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default"><b>Category</b></span>
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="category" value="{{data.Category}}">
+</div>
+    <div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default"><b>Name</b></span>
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="name" value="{{data.Name}}">
+</div>
+    <div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default"><b>Image</b></span>
+  <input type="file" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="image">
+
+</div>
+    <div style="">
+        <img src="{{data.Image.url}}" style="border-radius:10%;" width="100px" height="90px">
+    </div>
+    <button type="submit" class="btn btn-primary btn-md" style="margin-top:10px;">Submit</button>
+</form>
+
+
+</div>
+
+
+</body>
+</html>
+{% endblock %}

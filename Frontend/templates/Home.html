@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>booKTicket</title>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+  <section id="title">
+  <div class="container-fluid">
+
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand ps-1" href="">booKTicket</a>
+     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'contactpage' %}">Contact</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#pricing">Pricing</a>
+        </li>
+        <li class="nav-item">
+          {% if request.session.username %}
+            <a class="nav-link" href="{% url 'userlogout' %}" onclick="{% url 'userlogout' %}">{{request.session.username}}</a>
+          {% endif %}
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#footer"></a>
+      </li>
+    </ul>
+ </div>
+</nav>
+
+
+
+
+
+
+    <div class="row">
+      <div class="col-lg-6 col-md">
+      <h1>Catch your seats before the show.</h1>
+      <button type="button" class="btn btn-dark btn-lg"><img src="{% static 'images/playstore.png' %}" class="playstore" alt=""> Download</button>
+      <button type="button" class="btn btn-dark btn-lg"><img src="{% static 'images/apple.png' %}" alt="" class="apple-image"> Download</button>
+    </div>
+
+    </div>
+
+  </div>
+
+  </section>
+
+
+
+
+  <section id="features">
+    <div class="row">
+      <div class="features-box col-lg-4 ">
+        <img src="{% static 'images/easy.png' %}" class="easy" alt="">
+        <h3><b>Easy to use.</b></h3>
+      <p>So easy to use.</p>
+
+
+      </div>
+      <div class="features-box col-lg-4 ">
+        <img src="{% static 'images/touch.png' %}" class="easy" alt="">
+        <h3><b>Just a click.</b></h3>
+      <p>At your finger tips.</p>
+
+      </div>
+      <div class="features-box col-lg-4">
+        <img src="{% static 'images/tick.png' %}" alt="">
+        <h3><b>Guaranteed to work.</b></h3>
+      <p>Find your show, enjoy.</p>
+
+
+      </div>
+
+    </div>
+
+
+
+
+
+
+  </section>
+
+
+
+
+  <section id="testimonials">
+    <div id="carouselExample" class="carousel slide" data-ride="false">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <h2>If you forgot to book your seats, no worries bookticket will help you.</h2>
+        </div>
+        <div class="carousel-item">
+          <h2 class="testimonial-text">Grab your favourite snacks and drinks, tickets are ready.</h2>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" ></span>
+
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" ></span>
+
+        </button>
+      </div>
+
+
+
+
+
+  </section>
+
+
+
+
+  <section id="press">
+
+
+  </section>
+
+
+
+
+  <section id="pricing">
+
+    <h2>Now Running</h2>
+
+
+    <div class="row">
+      {% for d in data %}
+      <div class="col-lg-4 col-md-6 pricing-column">
+        <div class="card">
+          <div class="card-header">
+            <h3>{{d.Name}}</h3>
+
+          </div>
+          <img src="{{d.Image.url}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h2>{{d.Language}}</h2>
+            <p>{{d.Category}}</p>
+
+            <a href="{% url 'loginP' %}"><button class="btn btn-lg btn-block btn-dark" type="button">Book Now</button></a>
+
+
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+<!--      <div class="col-lg-4 col-md-6 pricing-column">-->
+<!--        <div class="card">-->
+<!--          <div class="card-header">-->
+<!--            <h3>Bahubali: The Beginning-->
+<!--            </h3>-->
+
+<!--          </div>-->
+<!--          <img src="" class="card-img-top" alt="...">-->
+<!--          <div class="card-body">-->
+<!--            <h2>8</h2>-->
+<!--        <p>Action</p>-->
+
+<!--        <a href=""><button class="btn btn-lg btn-block btn-dark" type="button">Book Now</button></a>-->
+
+
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-lg-4 pricing-column">-->
+<!--        <div class="card">-->
+<!--          <div class="card-header">-->
+<!--            <h3>Joker</h3>-->
+
+<!--          </div>-->
+<!--          <img src="" class="card-img-top" alt="...">-->
+<!--          <div class="card-body">-->
+<!--            <h2>8.4</h2>-->
+<!--        <p>Thriller</p>-->
+
+
+<!--        <a href=""><button class="btn btn-lg btn-block btn-dark" type="button">Book Now</button></a>-->
+
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  </section>
+
+
+
+
+  <section id="cta">
+
+    <h3 class="last-font">Find the show to enjoy your day.</h3>
+    <button class="btn btn-outline-light btn-lg" type="button"><img src="{% static 'images/playstore.png' %}" class="playstore"> Download</button>
+    <button class="btn btn-outline-light btn-lg" type="button"><img src="{% static 'images/apple.png' %}" class="apple-image"> Download</button>
+
+  </section>
+
+
+
+
+  <footer id="footer">
+
+    <a href=""><img src="{% static 'images/linkedin.png' %}" class="footer-ln" alt=""></a>
+    <a href=""><img src="{% static 'images/instagram.png' %}" class="instagram" alt=""></a>
+    <p>© Copyright booKTicket</p>
+
+
+  </footer>
+  <style>
+    #title{
+    background-color: #03001C;
+    padding: 3% 15%;
+}
+.container-fluid{
+    padding: 3% 15% ;
+
+}
+
+body{
+    font-family:"Montsterrat";
+}
+.navbar{
+    padding: 0 0 4.5rem;
+}
+.nav-item{
+    padding-left: 1rem;
+    font-size: 1.5rem;
+}
+.navbar-brand{
+    font-size: 3rem;
+}
+
+h1{
+    color: aliceblue;
+    font-family: "Montserrat-Black";
+}
+.btn{
+    margin: 5% 3% 5% 0%;
+}
+
+#features{
+    padding:7% 15%;
+    background-color: #FFF;
+    position:relative;
+    z-index: 1;
+}
+.features-box{
+    padding: 5%;
+    text-align: center;
+}
+
+h2{
+    font-family: monospace;
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 1.5;
+}
+h3{
+    font-family: 'Times New Roman', Times, serif;
+
+}
+p{
+    color: #8f8f8f;
+}
+#carouselExample{
+    padding-top: 20px;
+    margin-top: 20px;
+}
+/* testimonial */
+#testimonials{
+    padding: 7% 15%;
+    text-align: center;
+    background-color: #16213E;
+    color: white;
+}
+.testimonial-image{
+    width: 10%;
+    border-radius: 100%;
+    margin: 2%;
+}
+
+
+#pricing{
+    padding: 100px;
+    text-align: center;
+}
+.pricing-column{
+    padding: 2% 3%;
+}
+@media (max-width:1028px){
+
+    #title{
+        text-align: center;
+    }
+
+}
+#cta{
+    padding: 3% 15%;
+    text-align: center;
+    background-color: #16213E;
+    color: #FFF;
+}
+.last-font{
+    font-size: 50px;
+    padding-top: 5%;
+}
+.apple-image{
+    width: 25px;
+    height: 24px;
+    margin-bottom: 3px;
+}
+.playstore{
+    width: 25px;
+    height: 23px;
+    margin-bottom: 3px;
+}
+#footer{
+    padding: 3% 15%;
+    text-align: center;
+    font-weight: bold;
+}
+.footer-ln{
+    width: 25px;
+    height: 24px;
+
+}
+.instagram{
+    width: 25px;
+    height: 24px;
+
+}
+.easy{
+    width: 55px;
+    height: 51px;
+    margin-bottom: 5px;
+
+}
+
+
+  </style>
+
+
+</body>
+
+</html>

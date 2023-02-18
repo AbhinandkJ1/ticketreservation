@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="row" style="padding-top: 15px;">
+<form method="post" action="{% url 'saverating' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default"><b>Category</b></span>
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="category">
+</div>
+    <div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default"><b>Rating</b></span>
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="rating">
+</div>
+    <button type="submit" class="btn btn-primary btn-md">Submit</button>
+</form>
+
+
+</div>
+
+
+</body>
+</html>
+{% endblock %}
